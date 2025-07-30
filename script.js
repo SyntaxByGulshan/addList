@@ -100,9 +100,9 @@ document.getElementById('outputdata').addEventListener('click',function(event){
         const parent=event.target.parentNode.parentNode
         const index=parent.dataset.index
         show(index)
-        event.stopImmediatePropagation()
+        
     }
-    // event.stopPropagation()
+    event.stopPropagation()
 })
 
 
