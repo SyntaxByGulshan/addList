@@ -156,7 +156,8 @@
           error.textContent = "Description must be at least 100 characters long.";
        }
     }
-  
+ 
+    //on load check all fields data
 window.onload = function() {
     const editIndex = localStorage.getItem('editIndex');
     if (editIndex !== null) {

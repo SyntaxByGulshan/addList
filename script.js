@@ -88,8 +88,14 @@ function show(index){
     tdata.appendChild(l)
     console.log(tdata)
 }
-document.getElementById('body').addEventListener('click',function(){
-    window.location.reload()
+// when click on out of the table hide the options
+document.getElementById('body').addEventListener('click',function(event){
+    
+    let index=localStorage.getItem('index')
+    if(index!=null && event.target.tagName!='IMG'){
+      localStorage.removeItem('index') 
+      window.location.reload()  
+    }
     
 })
 
@@ -99,9 +105,20 @@ document.getElementById('outputdata').addEventListener('click',function(event){
     if (event.target.tagName ==='IMG') {
         const parent=event.target.parentNode.parentNode
         const index=parent.dataset.index
+        localStorage.setItem('index',index)
         show(index) 
     }
-    event.stopPropagation()
+    // event.stopPropagation()
 })
-
-
+// document.getElementById('srch').addEventListener('input',(event)=>{
+//     const srch=document.getElementById('srch').value
+//     const data=JSON.parse(localStorage.getItem('data'))
+//     const filteredData=data.filter(item=>item.ProductName.toLowerCase().includes(srch.toLowerCase()))
+//     const outputdata=document.getElementById('outputdata')
+//     outputdata.innerHTML=filteredData
+//   event.stopPropagation()
+// })
+// function finddata(event){
+//     console.log('search')
+//      event.stopImmediatePropagation()
+// }
