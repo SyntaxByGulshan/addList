@@ -99,8 +99,7 @@ document.getElementById('outputdata').addEventListener('click',function(event){
     if (event.target.tagName ==='IMG') {
         const parent=event.target.parentNode.parentNode
         const index=parent.dataset.index
-        show(index)
-        
+        show(index) 
     }
     event.stopPropagation()
 })

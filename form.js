@@ -64,7 +64,7 @@
     return true;
   }
   else{
-    alert("Please fill in all fields correctly.");
+    alert("Please fill in all fields properly.");
     return false;
   }
    }
@@ -113,7 +113,7 @@
         const error=document.getElementById("error-length")
         error.innerText='';
         if(isNaN(length) || length<=0 ||length>=100){
-            error.textContent = "weight must be a positive number and not exceed the max length of any product.";
+            error.textContent = "weight must be a positive number and not exceed the 100cm length of any product.";
             return
         }
     }
@@ -123,7 +123,7 @@
         const error=document.getElementById("error-breadth")
         error.innerText='';
         if(isNaN(breadth) || breadth<=0 ||breadth>=100){
-            error.textContent = "weight must be a positive number and not exceed the max length of any product.";
+            error.textContent = "weight must be a positive number and not exceed the 100cm length of any product.";
             return
         }
     }
@@ -133,7 +133,7 @@
         const error=document.getElementById("error-breadth")
         error.innerText='';
         if(isNaN(breadth) || breadth<=0 ||breadth>=100){
-            error.textContent = "weight must be a positive number and not exceed the max length of any product.";
+            error.textContent = "weight must be a positive number and not exceed the 100cm length of any product.";
             return
         }
     }
@@ -143,7 +143,7 @@
         const error=document.getElementById("error-width")
         error.innerText='';
         if(isNaN(width) || width<=0 ||width>=100){
-            error.textContent = "weight must be a positive number and not exceed the max length of any product.";
+            error.textContent = "weight must be a positive number and not exceed the 100ck length of any product.";
             return
         }
     }
