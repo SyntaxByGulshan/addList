@@ -91,6 +91,7 @@ function show(index){
 // when click on out of the table hide the options
 document.getElementById('body').addEventListener('click',function(event){
     let index=localStorage.getItem('index')
+    
     console.log(event.target)
     if(index!=null && event.target.tagName==='TD'){
       localStorage.removeItem('index') 
