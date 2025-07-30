@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Styled Product Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white min-h-screen flex items-center justify-center p-4">
+
+  <form id="productForm" onsubmit="return validateForm(event)" 
+        class="w-full max-w-4xl space-y-6">
+        
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm text-gray-700 font-medium mb-1" for="productName">Product Name</label>
+        <input type="text" id="productName" name="productName"
+               class="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-sm placeholder:text-gray-400"
+               placeholder="Type product name" oninput="validateProductName()" />
+        <div class="text-xs text-red-500 mt-1" id="error-productName"></div>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-700 font-medium mb-1" for="category">Category</label>
+        <select id="category" name="category" required
+                class="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-sm">
+          <option selected disabled value="">Select category</option>
+          <option value="TV/Monitors">TV/Monitors</option>
+          <option value="PC">PC</option>
+          <option value="Gaming/Console">Gaming/Console</option>
+          <option value="Phones">Phones</option>
+          <option value="Tablet">Tablet</option>
+        </select>
+        <div class="text-xs text-red-500 mt-1" id="error-category"></div>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-700 font-medium mb-1" for="brand">Brand</label>
+        <input type="text" id="brand" name="brand"
+               class="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-sm placeholder:text-gray-400"
+               placeholder="Product brand" oninput="validateBrandNamee()" />
+        <div class="text-xs text-red-500 mt-1" id="error-brand"></div>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-700 font-medium mb-1" for="price">Price</label>
+        <input type="number" id="price" name="price"
+               class="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-sm"
+               oninput="validatePrice()" />
+        <div class="text-xs text-red-500 mt-1" id="error-price"></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div>
+        <label class="block text-sm text-gray-700 font-medium mb-1" for="weight">Item weight (kg)</label>
+        <input type="number" id="weight" name="weight"
+               class="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-sm"
+               oninput="validateWeight()" />
+        <div class="text-xs text-red-500 mt-1" id="error-weight"></div>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-700 font-medium mb-1" for="length">Length (cm)</label>
+        <input type="number" id="length" name="length"
+               class="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-sm"
+               oninput="validateLength()" />
+        <div class="text-xs text-red-500 mt-1" id="error-length"></div>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-700 font-medium mb-1" for="breadth">Breadth (cm)</label>
+        <input type="number" id="breadth" name="breadth"
+               class="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-sm"
+               oninput="validateBreadth()" />
+        <div class="text-xs text-red-500 mt-1" id="error-breadth"></div>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-700 font-medium mb-1" for="width">Width (cm)</label>
+        <input type="number" id="width" name="width"
+               class="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-sm"
+               oninput="validateWidth()" />
+        <div class="text-xs text-red-500 mt-1" id="error-width"></div>
+      </div>
+    </div>
+
+    <div>
+      <label class="block text-sm text-gray-700 font-medium mb-1" for="description">Description</label>
+      <textarea id="description" name="description" rows="3"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-sm placeholder:text-gray-400"
+                placeholder="Write product description here"
+                oninput="validateDescription()"></textarea>
+      <div class="text-xs text-red-500 mt-1" id="error-discription"></div>
+    </div>
+
+    <div class="space-y-2">
+      <label class="block text-sm text-gray-700 font-medium">Sales Channel</label>
+      <div class="flex flex-wrap gap-4 text-sm text-gray-600">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" name="channel" value="in-store" class="accent-gray-500" />
+          <span>In-store only</span>
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="checkbox" name="channel" value="online" class="accent-gray-500" />
+          <span>Online selling only</span>
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="checkbox" name="channel" value="both" checked class="accent-blue-600" />
+          <span>Both in-store and online</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="pt-4">
+      <button type="submit"
+              class="bg-blue-600 text-white text-sm font-medium px-6 py-2 rounded-md hover:bg-blue-700 transition">
+        Add
+      </button>
+    </div>
+  </form>
+
+  <script src="./form.js"></script>
+</body>
+</html>
