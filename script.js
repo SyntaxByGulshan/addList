@@ -92,7 +92,7 @@ function show(index){
 document.getElementById('body').addEventListener('click',function(event){
     
     let index=localStorage.getItem('index')
-    if(index!=null && event.target.tagName!='IMG'){
+    if(index!=null && event.target.tagName==='TD'){
       localStorage.removeItem('index') 
       window.location.reload()  
     } 
@@ -107,9 +107,10 @@ document.getElementById('outputdata').addEventListener('click',function(event){
         localStorage.setItem('index',index)
         show(index) 
     }  
+    // event.stopPropagation()
 })
-//search product using product name
-document.getElementById('srch').addEventListener('change',(event)=>{
+// search product using product name
+document.getElementById('srch').addEventListener('change',()=>{
     const srch=document.getElementById('search').value
     console.log(srch)
     const data=JSON.parse(localStorage.getItem('products'))
