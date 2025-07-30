@@ -91,17 +91,38 @@ function show(index){
 // when click on out of the table hide the options
 document.getElementById('body').addEventListener('click',function(event){
     let index=localStorage.getItem('index')
-    
+    const tdata=document.getElementById('outputdata').childNodes[index].childNodes[5]
     console.log(event.target)
     if(index!=null && event.target.tagName==='TD'){
+     while (tdata.firstChild) {
+     tdata.removeChild(tdata.firstChild);
+      }
+    const dots=document.createElement('img')
+    dots.src="./dots.png"
+    console.log(dots)
+    dots.setAttribute('width','20px')
+    tdata.appendChild(dots)
       localStorage.removeItem('index') 
-      window.location.reload()  
     }else if(index!=null && event.target.parentNode.tagName==='HEADER'){
+       while (tdata.firstChild) {
+     tdata.removeChild(tdata.firstChild);
+      }
+    const dots=document.createElement('img')
+    dots.src="./dots.png"
+    console.log(dots)
+    dots.setAttribute('width','20px')
+    tdata.appendChild(dots)
       localStorage.removeItem('index') 
-      window.location.reload()  
     }else if(index!=null && event.target.tagName==='BODY'){
-      localStorage.removeItem('index') 
-      window.location.reload()  
+       while (tdata.firstChild) {
+     tdata.removeChild(tdata.firstChild);
+      }
+    const dots=document.createElement('img')
+    dots.src="./dots.png"
+    console.log(dots)
+    dots.setAttribute('width','20px')
+    tdata.appendChild(dots)
+      localStorage.removeItem('index')  
     }
 
     

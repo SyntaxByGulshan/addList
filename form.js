@@ -58,7 +58,6 @@
     document.getElementById("error-breadth").textContent = "breath must be a positive number.";
     hasError = true;
   }
-  
 
   if (!hasError){
     const product = {
@@ -184,9 +183,9 @@ window.onload = function() {
             document.getElementById('brand').value = product.brand || product.Brand || '';
             document.getElementById('category').value = product.Category || '';
             document.getElementById('price').value = product.Price || product.Price || '';
-            document.getElementById('weight').value = product.Height || '';
+            document.getElementById('weight').value = product.Weight || '';
             document.getElementById('length').value = product.Length || '';
-            document.getElementById('breadth').value = product.Breadth || '';
+            document.getElementById('breadth').value = product.Breath || '';
             document.getElementById('width').value = product.Width || '';
             document.getElementById('description').value = product.description || product.Discription || '';
             // Set checkboxes for channel if needed
