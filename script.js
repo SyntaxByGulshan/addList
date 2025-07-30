@@ -95,8 +95,7 @@ document.getElementById('body').addEventListener('click',function(event){
     if(index!=null && event.target.tagName!='IMG'){
       localStorage.removeItem('index') 
       window.location.reload()  
-    }
-    
+    } 
 })
 
 //on click on three dots then options of show function call
@@ -107,18 +106,21 @@ document.getElementById('outputdata').addEventListener('click',function(event){
         const index=parent.dataset.index
         localStorage.setItem('index',index)
         show(index) 
-    }
-    // event.stopPropagation()
+    }  
 })
-// document.getElementById('srch').addEventListener('input',(event)=>{
-//     const srch=document.getElementById('srch').value
-//     const data=JSON.parse(localStorage.getItem('data'))
-//     const filteredData=data.filter(item=>item.ProductName.toLowerCase().includes(srch.toLowerCase()))
-//     const outputdata=document.getElementById('outputdata')
-//     outputdata.innerHTML=filteredData
-//   event.stopPropagation()
-// })
-// function finddata(event){
-//     console.log('search')
-//      event.stopImmediatePropagation()
-// }
+//search product using product name
+document.getElementById('srch').addEventListener('change',(event)=>{
+    const srch=document.getElementById('search').value
+    console.log(srch)
+    const data=JSON.parse(localStorage.getItem('products'))
+    const filteredData=data.filter(item=>{
+        console.log(item.ProductName)
+        if(item.ProductName==srch){
+            return item
+        }
+    })
+    console.log(filteredData[0])
+    const outputdata=document.getElementById('outputdata')
+    outputdata.innerHTML=`<tr><td>${filteredData[0].ProductName}</td><td>${filteredData[0].Category}</td><td>${filteredData[0].Brand}</td><td>${filteredData[0].Discription}</td><td>${filteredData[0].Price}</td></tr>`
+})
+
