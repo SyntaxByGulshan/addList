@@ -90,12 +90,21 @@ function show(index){
 }
 // when click on out of the table hide the options
 document.getElementById('body').addEventListener('click',function(event){
-    
     let index=localStorage.getItem('index')
+    console.log(event.target)
     if(index!=null && event.target.tagName==='TD'){
       localStorage.removeItem('index') 
       window.location.reload()  
-    } 
+    }else if(index!=null && event.target.parentNode.tagName==='HEADER'){
+      localStorage.removeItem('index') 
+      window.location.reload()  
+    }else if(index!=null && event.target.tagName==='BODY'){
+      localStorage.removeItem('index') 
+      window.location.reload()  
+    }
+
+    
+
 })
 
 //on click on three dots then options of show function call
@@ -107,7 +116,7 @@ document.getElementById('outputdata').addEventListener('click',function(event){
         localStorage.setItem('index',index)
         show(index) 
     }  
-    // event.stopPropagation()
+    
 })
 // search product using product name
 document.getElementById('srch').addEventListener('change',()=>{
