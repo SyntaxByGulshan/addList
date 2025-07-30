@@ -42,6 +42,23 @@
     document.getElementById("error-price").textContent = "Price must be a positive number.";
     hasError = true;
   }
+  if(weight<=0){
+    document.getElementById("error-weight").textContent = "Weight must be a positive number.";
+    hasError = true;
+  }
+  if(length<=0){
+    document.getElementById("error-length").textContent = "length must be a positive number.";
+    hasError = true;
+  }
+  if(width<=0){
+     document.getElementById("error-width").textContent = "length must be a positive number.";
+    hasError = true;
+  }
+  if(breath<=0){
+    document.getElementById("error-breadth").textContent = "breath must be a positive number.";
+    hasError = true;
+  }
+  
 
   if (!hasError){
     const product = {
