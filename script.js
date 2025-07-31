@@ -104,6 +104,7 @@ function show(index){
     console.log(tdata)
 }
 // when click on out of the table hide the options
+//events bubbling
 document.getElementById('body').addEventListener('click',function(event){
     let index=JSON.parse(localStorage.getItem('indexarray'))
     index.forEach((index,pos)=>{
