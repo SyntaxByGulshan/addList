@@ -186,19 +186,5 @@ document.getElementById('outputdata').addEventListener('click',function(event){
     }  
     
 })
-// search product using product name
-document.getElementById('srch').addEventListener('change',()=>{
-    const srch=document.getElementById('search').value
-    console.log(srch)
-    const data=JSON.parse(localStorage.getItem('products'))
-    const filteredData=data.filter(item=>{
-        console.log(item.ProductName)
-        if(item.ProductName==srch){
-            return item
-        }
-    })
-    console.log(filteredData[0])
-    const outputdata=document.getElementById('outputdata')
-    outputdata.innerHTML=`<tr><td>${filteredData[0].ProductName}</td><td>${filteredData[0].Category}</td><td>${filteredData[0].Brand}</td><td>${filteredData[0].Discription}</td><td>${filteredData[0].Price}</td></tr>`
-})
+
 
