@@ -17,7 +17,7 @@
   const weight=document.getElementById("weight").value;
   const length=document.getElementById("length").value;
   const width=document.getElementById("width").value;
-  const breath=document.getElementById("breadth").value;
+  const breadth=document.getElementById("breadth").value;
 
   // Validate productName
   if (productName.length>20 || productName.length<1) {
@@ -39,24 +39,28 @@
 
   // Validate price
   if (isNaN(price) || price <= 0) {
-    document.getElementById("error-price").textContent = "Price must be a positive number.";
+    document.getElementById("error-price").textContent = "Price must be a positive number ..";
     hasError = true;
   }
-  if(weight<=0){
-    document.getElementById("error-weight").textContent = "Weight must be a positive number.";
+  if(isNaN(weight)||weight<=0 || weight>100){
+    document.getElementById("error-weight").textContent = "Weight must be a positive number and not greater then 100.";
+    hasError = true;
+ 
+  }
+  if( isNaN(length)||length<=0 || length>100){
+    document.getElementById("error-length").textContent = "length must be a positive number not greater then 100..";
     hasError = true;
   }
-  if(length<=0){
-    document.getElementById("error-length").textContent = "length must be a positive number.";
+  if(isNaN(width)||width<=0 || width>100){
+     document.getElementById("error-width").textContent = "width must be a positive number not greater then 100..";
     hasError = true;
   }
-  if(width<=0){
-     document.getElementById("error-width").textContent = "length must be a positive number.";
+  if(isNaN(breadth)||breadth<=0 || breadth>100){
+    document.getElementById("error-breadth").textContent = "breadth must be a positive number not greater then 100..";
     hasError = true;
   }
-  if(breath<=0){
-    document.getElementById("error-breadth").textContent = "breath must be a positive number.";
-    hasError = true;
+  if(description.split('').length>100){
+     hasError=true;
   }
 
   if (!hasError){
@@ -69,7 +73,7 @@
       Weight:weight,
       Length:length,
       Width:width,
-      Breath:breath,
+      Breadth:breadth,
     };
     const products = JSON.parse(localStorage.getItem('products')) || [];
     products.push(product);
@@ -185,7 +189,7 @@ window.onload = function() {
             document.getElementById('price').value = product.Price || product.Price || '';
             document.getElementById('weight').value = product.Weight || '';
             document.getElementById('length').value = product.Length || '';
-            document.getElementById('breadth').value = product.Breath || '';
+            document.getElementById('breadth').value = product.Breadth || '';
             document.getElementById('width').value = product.Width || '';
             document.getElementById('description').value = product.description || product.Discription || '';
             // Set checkboxes for channel if needed

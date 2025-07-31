@@ -56,10 +56,25 @@ function del(index){
     console.log(products)
     products.splice(index,1)
     localStorage.setItem('products',JSON.stringify(products))
-    window.location.reload()
+    const i=JSON.parse(localStorage.getItem('indexarray')) 
+      if(i.length<=1){
+        localStorage.removeItem('indexarray')
+      }
+      else{
+        i.sort((a,b)=>a-b)
+        i.pop()
+      localStorage.setItem('indexarray',JSON.stringify(i))
+      }
+      
+      window.location.reload()
+
 }
 function edit(index){
     localStorage.setItem('editIndex',index)
+    // const i=JSON.parse(localStorage.getItem('indexarray')) 
+    //   i.splice(index,1)
+    //   localStorage.setItem('indexarray',JSON.stringify(i))
+    localStorage.removeItem('indexarray')
     window.location.href='./form.html'
 }
 //show function show options of del and edit
@@ -90,7 +105,8 @@ function show(index){
 }
 // when click on out of the table hide the options
 document.getElementById('body').addEventListener('click',function(event){
-    let index=localStorage.getItem('index')
+    let index=JSON.parse(localStorage.getItem('indexarray'))
+    index.forEach((index,pos)=>{
     const tdata=document.getElementById('outputdata').childNodes[index].childNodes[5]
     console.log(event.target)
     if(index!=null && event.target.tagName==='TD'){
@@ -102,7 +118,14 @@ document.getElementById('body').addEventListener('click',function(event){
     console.log(dots)
     dots.setAttribute('width','20px')
     tdata.appendChild(dots)
-      localStorage.removeItem('index') 
+      const i=JSON.parse(localStorage.getItem('indexarray')) 
+      if(i.length<=1){
+        localStorage.removeItem('indexarray')
+      }
+      else{
+        i.splice(pos,1)
+      localStorage.setItem('indexarray',JSON.stringify(i))
+      }
     }else if(index!=null && event.target.parentNode.tagName==='HEADER'){
        while (tdata.firstChild) {
      tdata.removeChild(tdata.firstChild);
@@ -112,7 +135,14 @@ document.getElementById('body').addEventListener('click',function(event){
     console.log(dots)
     dots.setAttribute('width','20px')
     tdata.appendChild(dots)
-      localStorage.removeItem('index') 
+     const i=JSON.parse(localStorage.getItem('indexarray')) 
+      if(i.length<=1){
+        localStorage.removeItem('indexarray')
+      }
+      else{
+        i.splice(pos,1)
+      localStorage.setItem('indexarray',JSON.stringify(i))
+      }
     }else if(index!=null && event.target.tagName==='BODY'){
        while (tdata.firstChild) {
      tdata.removeChild(tdata.firstChild);
@@ -122,9 +152,16 @@ document.getElementById('body').addEventListener('click',function(event){
     console.log(dots)
     dots.setAttribute('width','20px')
     tdata.appendChild(dots)
-      localStorage.removeItem('index')  
+    const i=JSON.parse(localStorage.getItem('indexarray')) 
+      if(i.length<=1){
+        localStorage.removeItem('indexarray')
+      }
+      else{
+        i.splice(pos,1)
+      localStorage.setItem('indexarray',JSON.stringify(i))
+      }
     }
-
+    })
     
 
 })
@@ -135,8 +172,17 @@ document.getElementById('outputdata').addEventListener('click',function(event){
     if (event.target.tagName ==='IMG') {
         const parent=event.target.parentNode.parentNode
         const index=parent.dataset.index
-        localStorage.setItem('index',index)
-        show(index) 
+        if(localStorage.getItem('indexarray')){
+            const indexarray=JSON.parse(localStorage.getItem('indexarray'))
+            indexarray.push(index)
+            localStorage.setItem('indexarray',JSON.stringify(indexarray))
+            show(index)
+        }else{
+            const indexarray=[]
+            indexarray.push(index)
+            localStorage.setItem('indexarray',JSON.stringify(indexarray))
+            show(index)
+        } 
     }  
     
 })
