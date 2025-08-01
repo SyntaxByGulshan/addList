@@ -1,4 +1,3 @@
-
 //display local storage element to the screen
 const data=JSON.parse(localStorage.getItem('products'))
 console.log(data)
@@ -55,25 +54,12 @@ function del(index){
     const products=JSON.parse(localStorage.getItem('products'))
     console.log(products)
     products.splice(index,1)
-    localStorage.setItem('products',JSON.stringify(products))
-    const i=JSON.parse(localStorage.getItem('indexarray')) 
-      if(i.length<=1){
-        localStorage.removeItem('indexarray')
-      }
-      else{
-        i.sort((a,b)=>a-b)
-        i.pop()
-      localStorage.setItem('indexarray',JSON.stringify(i))
-      }
-      
+    localStorage.setItem('products',JSON.stringify(products)) 
+      localStorage.removeItem('indexarray')
       window.location.reload()
-
 }
 function edit(index){
     localStorage.setItem('editIndex',index)
-    // const i=JSON.parse(localStorage.getItem('indexarray')) 
-    //   i.splice(index,1)
-    //   localStorage.setItem('indexarray',JSON.stringify(i))
     localStorage.removeItem('indexarray')
     window.location.href='./form.html'
 }
@@ -106,11 +92,12 @@ function show(index){
 // when click on out of the table hide the options
 //events bubbling
 document.getElementById('body').addEventListener('click',function(event){
-    let index=JSON.parse(localStorage.getItem('indexarray'))
-    index.forEach((index,pos)=>{
-    const tdata=document.getElementById('outputdata').childNodes[index].childNodes[5]
+    let i=JSON.parse(localStorage.getItem('indexarray'))
+    const index=i?i[0]:null
+   console.log(index)
     console.log(event.target)
     if(index!=null && event.target.tagName==='TD'){
+       const tdata=document.getElementById('outputdata').childNodes[index].childNodes[5]
      while (tdata.firstChild) {
      tdata.removeChild(tdata.firstChild);
       }
@@ -123,11 +110,8 @@ document.getElementById('body').addEventListener('click',function(event){
       if(i.length<=1){
         localStorage.removeItem('indexarray')
       }
-      else{
-        i.splice(pos,1)
-      localStorage.setItem('indexarray',JSON.stringify(i))
-      }
     }else if(index!=null && event.target.parentNode.tagName==='HEADER'){
+       const tdata=document.getElementById('outputdata').childNodes[index].childNodes[5]
        while (tdata.firstChild) {
      tdata.removeChild(tdata.firstChild);
       }
@@ -140,11 +124,8 @@ document.getElementById('body').addEventListener('click',function(event){
       if(i.length<=1){
         localStorage.removeItem('indexarray')
       }
-      else{
-        i.splice(pos,1)
-      localStorage.setItem('indexarray',JSON.stringify(i))
-      }
     }else if(index!=null && event.target.tagName==='BODY'){
+       const tdata=document.getElementById('outputdata').childNodes[index].childNodes[5]
        while (tdata.firstChild) {
      tdata.removeChild(tdata.firstChild);
       }
@@ -157,15 +138,22 @@ document.getElementById('body').addEventListener('click',function(event){
       if(i.length<=1){
         localStorage.removeItem('indexarray')
       }
-      else{
-        i.splice(pos,1)
-      localStorage.setItem('indexarray',JSON.stringify(i))
+    }
+    else if( event.target.tagName==='IMG' && i.length>=2 ){
+       const tdata=document.getElementById('outputdata').childNodes[index].childNodes[5]
+         while (tdata.firstChild) {
+     tdata.removeChild(tdata.firstChild);
       }
+    const dots=document.createElement('img')
+    dots.src="./dots.png"
+    console.log(dots)
+    dots.setAttribute('width','20px')
+    tdata.appendChild(dots)
+    const ind=JSON.parse(localStorage.getItem('indexarray')) 
+    ind.shift()
+    localStorage.setItem('indexarray',JSON.stringify(ind))
     }
     })
-    
-
-})
 
 //on click on three dots then options of show function call
 document.getElementById('outputdata').addEventListener('click',function(event){
